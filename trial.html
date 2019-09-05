@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#myDIV {
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+
+<p>Click the button to create a P element with some text, and append it to DIV.</p>
+<div id="myDIV">
+    A DIV element
+    </div>
+<div id="manish">
+<p>hey</p>
+</div>
+
+
+<button type="button" onclick="myFunction()">Try it</button>
+
+<script>
+  function abc(){
+    console.log("hey");
+  }
+function myFunction() {
+  var para = document.createElement('div');
+  para.innerHTML="hey this is a trial";
+  var inp=document.createElement('button');
+  inp.innerHTML="press";
+  inp.setAttribute("type","button");
+  inp.addEventListener("click",abc);
+  para.appendChild(inp);
+  document.getElementById('manish').appendChild(para);
+}
+</script>
+
+</body>
+</html>

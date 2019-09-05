@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ToDo List</title>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap-grid.css">
+  <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div class="container allList ">
+  <div class="row justify-content-center">
+    <label for="">
+      <input type="text" name="" id="myText">
+      <button type="submit" class="submit-btn"  onclick="NewTask()"><i class="fa fa-send-o"></i></button>
+
+    </label>
+  </div>
+  <br>
+  <div class="row justify-content-center">
+    <label for="">
+      <button type="button" class="btn btn-info " onclick="allTask()"><i class="fa fa-tasks" aria-hidden="true"></i></button>
+      <button type="button" class="btn btn-info " onclick="completedTask()"><i class="fa fa-check-square-o" aria-hidden="true"></i></button>
+      <button type="button" class="btn btn-info " onclick="remainingTask()"><i class="fa fa-square-o" aria-hidden="true"></i></button>
+    </label>
+  </div>
+  <div class="row justify-content-center">
+    <div id="TaskList" class="col-6"></div>
+    <div class="col-6" id="TaskList1"></div>
+  </div>  
+</div>
+
+
+
+
+
+<script src="./index.js"></script>
+ 
+</body>
+</html>
