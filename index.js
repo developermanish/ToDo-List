@@ -7,6 +7,8 @@ var flag=0;
 var p;
 var p1;
 var i,i1,i2,i3;
+var u,v,w;
+var flag1=0,flag2=0,flag3=0;
 
 document.getElementById('myText').addEventListener('keypress', function (e) {
         var key = e.which || e.keyCode;
@@ -19,6 +21,12 @@ function NewTask(){
 
         a=document.getElementById("myText").value;
         document.getElementById('myText').value = '';
+        if(a=="")
+        {
+                window.alert("You forget to enter the task");
+        }
+        else
+        {
         localStorage.setItem(`${i}`, a);
 
         div = document.createElement('div');
@@ -76,7 +84,9 @@ function NewTask(){
         k++;
        
         localStorage.setItem('k', k);
+        }
 }
+
 
 
 function allTask()
@@ -307,7 +317,44 @@ function completed(){
         var random1=random[1].split(">");
         
         //console.log(random[0]);
+        flag=0;
+         u=0;
+         v=100;
+         w=localStorage.getItem('l');
+        while(u<w)
+        {
+                p=localStorage.getItem(`${v}`);
+                if(p==random1[1])
+                {
+                        window.alert("This task is already included in completed list");
+                        flag=1;
+                        break;
+                }
+                v++;
+                u++;
+
+        }
         
+        // m=0;
+        // j=100;
+        // l=localStorage.getItem('l');
+  
+        
+        // while(m<l)
+        // {
+        //         p=localStorage.getItem(`${j}`);
+        //         if(p==random1[1])
+        //         {
+        //                 localStorage.removeItem(`${j}`);
+        //                 console.log(this.parentNode);
+        //                 break;
+        //         }
+        //         j++;
+        //         m++;
+        // }
+        if(flag==0)
+        {
+
         localStorage.setItem(`${j}`,random1[1]);
         j++;  
         
@@ -317,6 +364,7 @@ function completed(){
         l++;
         localStorage.setItem('l', l);
 
+        }
 }
 
 function edit()
@@ -397,6 +445,12 @@ function NewTask1(oldValue)
         }
 
         a=document.getElementById("myText1").value;
+        if(a=="")
+        {
+                window.alert("you forget to enter the task");
+                allTask();       
+        }
+        else{
         localStorage.setItem(`${i}`,a);
 
         //put the value back in task list
@@ -450,6 +504,7 @@ function NewTask1(oldValue)
         
         document.getElementById('TaskList').appendChild(div);
 
+        }
 }
 
 function deleted()
@@ -466,6 +521,7 @@ function deleted()
                 {
                         localStorage.removeItem(`${i}`);
                         this.parentNode.innerHTML="";
+                        flag1=1;
                         break;
                 }
                 i++;        
@@ -479,9 +535,11 @@ function deleted()
                 localStorage.setItem(`${l}`,a);
 
         }
+        if(flag1==1)
+        {
         k=k-1;
         localStorage.setItem('k',k);
-
+        }
 
         // Delete from completedTask
 
@@ -497,6 +555,7 @@ function deleted()
                 {
                         localStorage.removeItem(`${j}`);
                         console.log(this.parentNode);
+                        flag2=1;
                         break;
                 }
                 j++;
@@ -511,9 +570,10 @@ function deleted()
                 m++;
 
         }
-        l=l-1;
-        localStorage.setItem('l',l);
-
+        if(flag2==1)
+        {       l=l-1;
+                localStorage.setItem('l',l);
+        }
 
         // Delete from remainingTask
 
@@ -526,13 +586,13 @@ function deleted()
                 if(p==random1[1])
                 {
                         localStorage.removeItem(`r${n}`);
-                        this.parentNode.innerHTML="";
+                        flag3=1;
                         break;
                 }
                 n++;
                 
         }
-        while(n<0)
+        while(n<o)
         {
                 q=n;
                 n+=1;
@@ -540,7 +600,9 @@ function deleted()
                 localStorage.setItem(`r${q}`,a);
 
         }
-        o=o-1;
-        localStorage.setItem('o',o);
-
+        if(flag3==1)
+        {
+                o=o-1;
+                localStorage.setItem('o',o);
+        }
 }
